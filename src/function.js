@@ -22,8 +22,10 @@ function goMessage(msg, sender, sendResponse) {
 
     if (side.style.display == "none") {
       side.style.display = "block";
+      document.querySelector('[data-testid="conversation-info-header-chat-title"]').style.filter = 'blur(0px)';
     } else {
       side.style.display = "none";
+      document.querySelector('[data-testid="conversation-info-header-chat-title"]').style.filter = 'blur(5px)';
     }
   }
 }
