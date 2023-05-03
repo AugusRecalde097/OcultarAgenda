@@ -11,6 +11,7 @@ document.addEventListener("keydown", function(e) {
   }
 });
 
+
 console.log("content-script");
 
 chrome.runtime.onMessage.addListener(goMessage);
@@ -18,7 +19,8 @@ chrome.runtime.onMessage.addListener(goMessage);
 function goMessage(msg, sender, sendResponse) {
   //alert(msg.txt);
   if (msg.txt == "ocultar") {
-    var side = document.querySelector("#side").parentElement;
+
+    var side =  document.querySelector("[data-testid=chatlist-header]").parentElement;
 
     if (side.style.display == "none") {
       side.style.display = "block";
@@ -26,6 +28,10 @@ function goMessage(msg, sender, sendResponse) {
     } else {
       side.style.display = "none";
       document.querySelector('[data-testid="conversation-info-header-chat-title"]').style.filter = 'blur(5px)';
+      agregarBoton()
     }
   }
 }
+
+const style = (node, styles) => Object.keys(styles).forEach(key => node.style[key] = styles[key])
+//=======================================//
